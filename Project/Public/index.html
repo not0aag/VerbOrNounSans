@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">    
+    <title>Learn Hindi Words</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="landing-screen" class="landing-container">
+        <img src="./images/logo.jpg" alt="Learn Hindi Words Logo" class="game-logo">
+        <h1>Learn Hindi Words</h1>
+        <p class="description">Embark on a linguistic journey! Test your skills, improve your vocabulary, and have fun learning Hindi!</p>
+        <button onclick="startGame()" class="play-btn">Start Learning</button>
+        <div class="how-to-play">
+            <h3>How to Play</h3>
+            <ul class="play-steps">
+                <li><i class="fas fa-cube"></i> Identify whether words are nouns or verbs</li>
+                <li><i class="fas fa-running"></i> Press 'N' for nouns, 'V' for verbs</li>
+                <li><i class="fas fa-lightbulb"></i> Use 'H' key for hints</li>
+                <li><i class="fas fa-heart"></i> You have 3 attempts per game</li>
+                <li><i class="fas fa-star"></i> Score points to reach higher levels</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="game-screen" class="game-container" style="display: none;">
+        <div class="header">
+            <h1>Learn Hindi Words</h1>
+            <div class="game-info">
+                <div class="info-pill">
+                    <span class="info-label">Level</span>
+                    <span id="current-level" class="info-value">1</span>
+                </div>
+                <div class="info-pill">
+                    <span class="info-label">Score</span>
+                    <span id="score" class="info-value">0</span>
+                </div>
+                <div class="info-pill">
+                    <span class="info-label">High Score</span>
+                    <span id="high-score" class="info-value">0</span>
+                </div>
+                <div class="info-pill attempts">
+                    <span class="info-label">Attempts</span>
+                    <span id="attempts" class="info-value">3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-progress">
+            <div class="progress-bar">
+                <div id="level-progress" class="progress-bar-fill"></div>
+            </div>
+            <div class="progress-labels">
+                <span>Progress to Next Level</span>
+                <span id="progress-percentage">0%</span>
+            </div>
+        </div>
+
+        <div class="word-section">
+            <div class="word-card">
+                <div id="image-container" class="image-container">
+                    <img id="word-image" src="" alt="Word Image">
+                </div>
+                <div class="word-content">
+                    <h2 id="word-display" class="hindi-word"></h2>
+                    <div id="english-hint" class="english-hint"></div>
+                </div>
+                <div id="explanation" class="explanation"></div>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <div class="keyboard-hints">
+                <div class="keyboard-hint">
+                    <span class="key">N</span>
+                    <span class="hint-text">for Noun</span>
+                </div>
+                <div class="keyboard-hint">
+                    <span class="key">V</span>
+                    <span class="hint-text">for Verb</span>
+                </div>
+                <div class="keyboard-hint">
+                    <span class="key">H</span>
+                    <span class="hint-text">for Hint</span>
+                </div>
+            </div>
+            <div class="button-container">
+                <button onclick="checkAnswer('noun')" class="answer-btn noun-btn">
+                    <i class="fas fa-cube btn-icon"></i>
+                    <span class="btn-text">Noun</span>
+                </button>
+                <button onclick="checkAnswer('verb')" class="answer-btn verb-btn">
+                    <i class="fas fa-running btn-icon"></i>
+                    <span class="btn-text">Verb</span>
+                </button>
+                <button onclick="showHint()" class="hint-btn">
+                    <i class="fas fa-lightbulb btn-icon"></i>
+                    <span class="btn-text">Hint</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-over-screen" class="game-over-screen" style="display: none;">
+        <div class="game-over-content">
+            <h2 id="game-over-title">Game Over</h2>
+            <div class="game-over-stats">
+                <div class="game-over-stat">
+                    <div class="game-over-stat-label">Final Score</div>
+                    <div id="game-over-score" class="game-over-stat-value">0</div>
+                </div>
+                <div class="game-over-stat">
+                    <div class="game-over-stat-label">Level Reached</div>
+                    <div id="game-over-level" class="game-over-stat-value">0</div>
+                </div>
+            </div>
+            <button onclick="restartGame()" class="play-again-btn">
+                Play Again
+            </button>
+            <footer class="app-footer">
+                <div class="footer-content">
+                    <p>Made by Alen George</p>
+                    <div class="social-links">
+                        <a href="https://github.com/not0aag" target="_blank" class="github-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
